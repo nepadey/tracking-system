@@ -20,12 +20,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/track-me', 'TrackController@trackMe')->name('track.me');
+Route::post('/track-me', 'TrackController@storeTrackedData')->name('track.store');
+
 Route::middleware('auth')->group(function (){
   Route::get('/home', 'HomeController@index')->name('home');
-  Route::resource('/device', 'DeviceController')->only(['index', 'show', 'store', 'create',]);
+  Route::resource('/device', 'DeviceController')->only(['index', 'show', 'store']);
   Route::resource('/location', 'LocationController')->except(['create', 'store', 'update']);
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
