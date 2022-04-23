@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use  App\Http\Controllers\DeviceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->group(function (){
+  Route::get('/home', 'HomeController@index')->name('home');
+  Route::resource('/device', 'DeviceController')->only(['index', 'show', 'store', 'create',]);
+  Route::resource('/location', 'LocationController')->except(['create', 'store', 'update']);
+});
