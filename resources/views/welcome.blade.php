@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Tracking system</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -13,9 +13,10 @@
         <style>
             html, body {
                 background-color: #fff;
+                background-image: url(./img/3.jpg) ;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
-                font-weight: 200;
+                font-weight: bold;
                 height: 100vh;
                 margin: 0;
             }
@@ -28,6 +29,7 @@
                 align-items: center;
                 display: flex;
                 justify-content: center;
+               
             }
 
             .position-ref {
@@ -38,10 +40,13 @@
                 position: absolute;
                 right: 10px;
                 top: 18px;
+                color: black;
             }
 
             .content {
                 text-align: center;
+                font-weight: bold;
+                color: black;
             }
 
             .title {
@@ -49,13 +54,17 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: black;
                 padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
+                font-size: 20px;
+                font-weight: bold;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+            }
+            .links > a:hover {
+                background-color: blue;
+
             }
 
             .m-b-md {
@@ -81,19 +90,10 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Welcome To Tracking System
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                
             </div>
         </div>
     </body>
