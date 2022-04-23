@@ -25,3 +25,7 @@ Route::middleware('auth')->group(function (){
   Route::resource('/device', 'DeviceController')->only(['index', 'show', 'store', 'create',]);
   Route::resource('/location', 'LocationController')->except(['create', 'store', 'update']);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
