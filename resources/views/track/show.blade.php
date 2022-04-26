@@ -56,10 +56,9 @@
         method: "POST",
         url: '{!! route('track.store') !!}',
         data: coordinate
-      })
-        .done(function (msg) {
-          console.log("saving the data");
-        });
+      }).done(function (msg) {
+        console.log("saving the data");
+      });
     }
 
   </script>
