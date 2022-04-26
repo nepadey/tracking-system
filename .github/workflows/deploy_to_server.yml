@@ -17,4 +17,4 @@ jobs:
         username: epiz_31565042
         password: ${{ secrets.ftp_password }}
         server-dir: './htdocs/test'
-        local-dir: './app'
+        local-dir: './app/'
