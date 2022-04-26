@@ -8,12 +8,6 @@ use Illuminate\Http\Request;
 class TrackController extends Controller
 {
 
-  /**
-   * Display a listing of the resource.
-   *
-   * @param \Illuminate\Http\Request $request
-   * @return \Illuminate\View\View
-   */
   public function trackMe(Request $request)
   {
     $device = Device::where('device_token', $request->id)->first();
