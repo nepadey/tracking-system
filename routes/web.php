@@ -28,8 +28,6 @@ Route::middleware('auth')->group(function () {
   Route::resource('/device', 'DeviceController')->only(['index', 'show', 'store']);
   Route::resource('/location', 'LocationController')->except(['create', 'store', 'update']);
   Route::post('/device-location/{id}', 'DeviceController@getDeviceLocation')->name('device.location_history');
-//  Route::match(['get', 'post'], '/device-location/{id}', 'DeviceController@getDeviceLocation');
-
 });
 
 
