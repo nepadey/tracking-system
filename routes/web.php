@@ -23,10 +23,13 @@ Auth::routes();
 Route::get('/track-me', 'TrackController@trackMe')->name('track.me');
 Route::post('/track-me', 'TrackController@storeTrackedData')->name('track.store');
 
-Route::middleware('auth')->group(function (){
+Route::middleware('auth')->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
   Route::resource('/device', 'DeviceController')->only(['index', 'show', 'store']);
   Route::resource('/location', 'LocationController')->except(['create', 'store', 'update']);
+  Route::post('/device-location/{id}', 'DeviceController@getDeviceLocation')->name('device.location_history');
+//  Route::match(['get', 'post'], '/device-location/{id}', 'DeviceController@getDeviceLocation');
+
 });
 
 

@@ -7,19 +7,6 @@ use Illuminate\Http\Request;
 
 class TrackController extends Controller
 {
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  public function __construct()
-  {
-    define('ciphering', "AES-128-CTR", true);
-    $iv_length = openssl_cipher_iv_length(ciphering);
-    define('options', 0, true);
-    define('encryption_iv', '1234567891011121', true);
-    define('encryption_key', "TrackingSystem", true);
-  }
 
   /**
    * Display a listing of the resource.
@@ -48,16 +35,24 @@ class TrackController extends Controller
       $device->location()->create($location);
       return 200;
     }
-
   }
 
   private function encryptString($simple_string)
   {
-    return openssl_encrypt($simple_string, ciphering, encryption_key, options, encryption_iv);
+    $ciphering = "AES-128-CTR";
+    $options = 0;
+    $encryption_iv = '1234567891011121';
+    $encryption_key = "TrackingSystem";
+    return openssl_encrypt($simple_string, $ciphering, $encryption_key, $options, $encryption_iv);
   }
 
   private function decryptString($encryption_string)
   {
-    return openssl_decrypt($encryption_string, ciphering, encryption_key, options, encryption_iv);
+    $ciphering = "AES-128-CTR";
+    $options = 0;
+    $encryption_iv = '1234567891011121';
+    $encryption_key = "TrackingSystem";
+    return openssl_decrypt($encryption_string, $ciphering, $encryption_key, $options, $encryption_iv);
   }
+
 }

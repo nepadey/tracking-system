@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Device;
+use App\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -25,7 +26,8 @@ class DeviceController extends Controller
       return DataTables::of($data)
         ->addIndexColumn()
         ->addColumn('action', function ($row) {
-          return '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">Track </a>';
+          $device_url = route("device.show", ['device' => $row->id]);
+          return '<a href="' . $device_url . '" class="edit btn btn-primary btn-sm">Track </a>';
         })
         ->addColumn('tracking_url', function ($row) {
           return route("track.me", ['id' => $row->device_token]);
@@ -71,11 +73,17 @@ class DeviceController extends Controller
    * Display the specified resource.
    *
    * @param \App\Device $device
-   * @return \Illuminate\Http\Response
+   * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
    */
   public function show(Device $device)
   {
-    //
+    return view("device.show")->with(['device' => $device]);
+  }
+
+  public function getDeviceLocation($id)
+  {
+    $locations = Location::where('device_id', $id)->get();
+    echo json_encode($locations);
   }
 
   /**
